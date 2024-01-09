@@ -1,25 +1,25 @@
-import { timeStamp } from "console";
-import mongoose from "mongoose";
+import { timeStamp } from 'console';
+import mongoose from 'mongoose';
 
 const producSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "product name is required"],
+      required: [true, 'product name is required'],
       trim: true,
     },
     description: {
       type: String,
-      required: [true, "product description name is required"],
+      required: [true, 'product description name is required'],
       minLength: [
         10,
-        "product description should be atleat 10 characters long",
+        'product description should be atleat 10 characters long',
       ],
     },
     price: {
       type: Number,
-      required: [true, "product price  is required"],
-      maxLength: [8, "price can be of maximum 8 digits"],
+      required: [true, 'product price  is required'],
+      maxLength: [8, 'price can be of maximum 8 digits'],
     },
     rating: {
       type: Number,
@@ -39,35 +39,35 @@ const producSchema = new mongoose.Schema(
     ],
     category: {
       type: String,
-      required: [true, "product category is required"],
+      required: [true, 'product category is required'],
       enum: [
-        "Mobile",
-        "Electronics",
-        "Clothing",
-        "Home & Garden",
-        "Automotive",
-        "Health & Beauty",
-        "Sports & Outdoors",
-        "Toys & Games",
-        "Books & Media",
-        "Jewelry",
-        "Food & Grocery",
-        "Furniture",
-        "Shoes",
-        "Pet Supplies",
-        "Office Supplies",
-        "Baby & Kids",
-        "Art & Collectibles",
-        "Travel & Luggage",
-        "Music Instruments",
-        "Electrical Appliances",
-        "Handmade Crafts",
+        'Mobile',
+        'Electronics',
+        'Clothing',
+        'Home & Garden',
+        'Automotive',
+        'Health & Beauty',
+        'Sports & Outdoors',
+        'Toys & Games',
+        'Books & Media',
+        'Jewelry',
+        'Food & Grocery',
+        'Furniture',
+        'Shoes',
+        'Pet Supplies',
+        'Office Supplies',
+        'Baby & Kids',
+        'Art & Collectibles',
+        'Travel & Luggage',
+        'Music Instruments',
+        'Electrical Appliances',
+        'Handmade Crafts',
       ],
     },
     stock: {
       type: Number,
-      required: [true, "product stock is mandatory"],
-      maxLength: [5, "stock can be maximum 5 digits"],
+      required: [true, 'product stock is mandatory'],
+      maxLength: [5, 'stock can be maximum 5 digits'],
       default: 1,
     },
     reviews: [
@@ -92,7 +92,7 @@ const producSchema = new mongoose.Schema(
     ],
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     createdAt: {
@@ -103,5 +103,5 @@ const producSchema = new mongoose.Schema(
   timeStamp
 );
 
-const ProductModel = mongoose.model("Product", producSchema);
+const ProductModel = mongoose.model('Product', producSchema);
 export default ProductModel;

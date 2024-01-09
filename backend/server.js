@@ -1,5 +1,5 @@
-import server from "./app.js";
-import { connectDB } from "./config/db.js";
+import server from './app.js';
+import { connectDB } from './config/db.js';
 
 const serverStar = server.listen(process.env.PORT, async (err) => {
   if (err) {

@@ -19,6 +19,7 @@ export const addNewProduct = async (req, res, next) => {
       ...req.body,
       createdBy: req.user._id,
     });
+    console.log(product);
     if (product) {
       res.status(201).json({ success: true, product });
     } else {
