@@ -31,3 +31,4 @@ export const getTotalCountsOfProduct = async () => {
 export const findProductRepo = async (productId) => {
   return await ProductModel.findById(productId);
 };
+

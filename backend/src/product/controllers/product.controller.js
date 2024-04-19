@@ -19,7 +19,6 @@ export const addNewProduct = async (req, res, next) => {
       ...req.body,
       createdBy: req.user._id,
     });
-    console.log(product);
     if (product) {
       res.status(201).json({ success: true, product });
     } else {
@@ -32,7 +31,16 @@ export const addNewProduct = async (req, res, next) => {
 
 export const getAllProducts = async (req, res, next) => {
   // Implement the functionality for search, filter and pagination this function.
-  res.send('ok');
+  const { category } = req.body;
+
+  const products = await getAllProductsRepo();
+  const filterProduct = products.filter((product) => {
+    if (product.category === category) {
+      return product;
+    }
+  });
+  console.log(filterProduct);
+  res.send(filterProduct);
 };
 
 export const updateProduct = async (req, res, next) => {
@@ -119,6 +127,7 @@ export const rateProduct = async (req, res, next) => {
 export const getAllReviewsOfAProduct = async (req, res, next) => {
   try {
     const product = await findProductRepo(req.params.id);
+
     if (!product) {
       return next(new ErrorHandler(400, 'Product not found!'));
     }
